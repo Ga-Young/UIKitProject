@@ -7,15 +7,25 @@
 
 import UIKit
 
-class MyViewController: UIViewController {
+protocol AdminDelegate {
+    func doTask()
+}
 
+class MyViewController: UIViewController {
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var helloLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .red
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func TouchUpInside(_ sender: Any) {
+        let name = nameTextField.text ?? ""
+        helloLabel.text = "Hello, \(name)"
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -26,4 +36,10 @@ class MyViewController: UIViewController {
     }
     */
 
+}
+
+extension MyViewController: AdminDelegate {
+    func doTask() {
+        print("hello viewview")
+    }
 }
